@@ -13,7 +13,7 @@ AI coaching for yoyo tricks: point your camera at yourself, throw, and get told 
 
 Nothing is released and no application exists yet. What is real today is the **offline content pipeline** and its output.
 
-- **Repository:** local only. There is no `yoyo-app` repository on GitHub.
+- **Repository:** [`kaavi-pixel/yoyo-app`](https://github.com/kaavi-pixel/yoyo-app), public, default branch `main`.
 - **Pipeline:** working and rerunnable. 16 registered tutorial sources fetch and cache cleanly, repeat runs are idempotent, and the knowledge base passes validation.
 - **Knowledge base:** 8 tricks, 45 steps, 29 coach signals, 29 failure modes, all traceable to 15 source videos.
 - **Not implemented:** the entire on-device vision stack, the diagnosis and scoring engines, and the app itself. These are designed in `implementation-plan.md` and diagrammed in `docs/architecture.html`; none of it runs.

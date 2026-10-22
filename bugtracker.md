@@ -1,6 +1,6 @@
 # yoyo-app Bug Tracker
 
-Updated: 2026-10-22. Repository: local only — no GitHub remote configured.
+Updated: 2026-10-22. Repository: [kaavi-pixel/yoyo-app](https://github.com/kaavi-pixel/yoyo-app) (public, default branch `main`).
 
 This tracker records reproducible defects, fixes, and verification. Feature work remains in `implementation-plan.md`; a missing planned feature is not automatically a bug. Nothing here has been released, so no defect can be marked `released` or `verified_production`.
 

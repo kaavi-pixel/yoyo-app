@@ -6,7 +6,7 @@ This is the live progress record. Scope, task definitions and acceptance scenari
 
 ## Current state
 
-- **Repository:** local only, at `C:\Users\kavsb\projects\yoyo-app`. **There is no `yoyo-app` repository on GitHub.** None of the nine repositories under `kaavi-pixel` is this project, and no remote is configured. Publication is an open decision, not a completed step.
+- **Repository:** public at [`kaavi-pixel/yoyo-app`](https://github.com/kaavi-pixel/yoyo-app), default branch `main`, pushed from the local checkout at `C:\Users\kavsb\projects\yoyo-app`. The repository was created on 2026-10-22; before that the project was local-only with no remote.
 - **Released:** nothing. There is no application, no build, no store presence and no closed pilot.
 - **Content pipeline:** implemented and rerunnable. `pipeline/fetch_transcripts.py` retrieved 16 of 16 registered sources with zero failures. Repeat runs are idempotent — the manifest holds at `ok: 16` across consecutive runs (defect YO-001 fixed, see `bugtracker.md`).
 - **Knowledge base:** `data/knowledge_base/tricks.json` v0.1.0 holds 8 tricks, 45 steps, 29 coach signals, 29 failure modes and 15 source references. `pipeline/analyze.py --validate` passes. All entries are 1A and traceable to named source videos.
@@ -21,12 +21,12 @@ This is the live progress record. Scope, task definitions and acceptance scenari
 Do not rebuild the content pipeline; it works. Do not treat the architecture diagram or the prototype screen as implemented functionality.
 
 1. Run `python pipeline/fetch_transcripts.py` and `python pipeline/analyze.py --validate` first to confirm the baseline still passes before changing anything.
-2. Decide repository publication (public or private) with Kavi, then add the remote and push. Do not create a second copy of the project elsewhere.
+2. The repository is public at `kaavi-pixel/yoyo-app`. Push to `main`; do not create a second copy of the project elsewhere.
 3. Resolve YA-00E — confirm the single v1 trick and the camera angle — before writing any detector code. Everything in M2 depends on this.
 4. Start M2 with the capture harness (YA-20A) and hand tracking (YA-20B), which are low risk, then attack the yoyo detector (YA-20C), which determines whether the product is possible at all.
 5. Keep the `coach_signals` gate enforced. A trick added without signals must fail validation rather than silently ship as content the camera cannot check.
 
-Authoritative baseline: knowledge base v0.1.0, 16 cached transcripts, manifest `ok: 16`. No commit history exists yet because the project is not a git repository.
+Authoritative baseline: knowledge base v0.1.0, 16 cached transcripts, manifest `ok: 16`, commit `4ef1197` on `main` at `kaavi-pixel/yoyo-app`.
 
 ## Milestone tracker
 
@@ -51,4 +51,4 @@ Use the plan's checkboxes as the complete task list. Add active-task rows here a
 | YA-00E | in_progress | Kavi | v1 trick and camera angle not yet chosen | Pick one trick (Trapeze is the plan's default) and one angle |
 | YA-10E | not_started | Implementer | 8 tricks, all 1A | Widen to the full 1A beginner ladder, then intermediate |
 | YA-10G | not_started | Implementer | YO-002 open; garbled caption terms confirmed in fetched transcripts | Add a term-normalisation pass before analysis |
-| Repo publication | not_started | Kavi / Implementer | No remote configured, no GitHub repository exists | Decide visibility, then create and push |
+| Repo publication | done | Kavi / Implementer | Public repo `kaavi-pixel/yoyo-app` on `main`; contents verified by reading the remote back | None — keep `main` the only long-lived branch |
