@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>yoyo-app — coaching screen prototype</title>
+<style>
+  :root{
+    --screen:#0b1220; --screen2:#0f1a2e; --line:#1e2f4a;
+    --teal:#2dd4bf; --teal-dim:#14b8a6; --white:#e8eefb; --grey:#8aa0bf; --dimmer:#5c7395;
+    --good:#4ade80; --bad:#fb7185; --warn:#fbbf24;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;padding:0;}
+  .wrap{display:flex;gap:22px;align-items:flex-start;flex-wrap:wrap;}
+
+  /* ---------- phone ---------- */
+  .phone{width:300px;flex:0 0 300px;background:#050a14;border:1px solid #22314d;border-radius:38px;padding:11px;box-shadow:0 18px 50px rgba(0,0,0,.55);}
+  .screen{background:var(--screen);border-radius:29px;overflow:hidden;position:relative;}
+  .notch{height:22px;display:flex;align-items:center;justify-content:center;}
+  .notch span{width:74px;height:5px;border-radius:3px;background:#1e2f4a;}
+  .cam{position:relative;height:250px;background:linear-gradient(160deg,#122036,#0a1120);overflow:hidden;}
+  .cam svg{position:absolute;inset:0;width:100%;height:100%;}
+  .hud{position:absolute;top:9px;left:9px;right:9px;display:flex;justify-content:space-between;font-size:9px;letter-spacing:.09em;text-transform:uppercase;color:var(--teal);}
+  .hud .rec{display:flex;align-items:center;gap:5px;color:var(--bad);}
+  .hud .rec i{width:6px;height:6px;border-radius:50%;background:var(--bad);display:block;animation:blink 1.1s infinite;}
+  @keyframes blink{50%{opacity:.25}}
+  .missTag{position:absolute;left:14px;bottom:12px;background:rgba(251,113,133,.16);border:1px solid rgba(251,113,133,.55);color:#ffb3c0;font-size:9px;padding:4px 8px;border-radius:6px;letter-spacing:.05em;}
+  .steps{position:absolute;right:9px;bottom:12px;display:flex;gap:4px;}
+  .steps i{width:16px;height:4px;border-radius:2px;background:#233650;display:block;}
+  .steps i.ok{background:var(--teal);} .steps i.bad{background:var(--bad);}
+
+  .panel{background:var(--screen2);border-top:1px solid var(--line);padding:14px 14px 16px;}
+  .trickRow{display:flex;align-items:baseline;justify-content:space-between;}
+  .trickRow h2{font-size:16px;color:var(--white);letter-spacing:-.01em;}
+  .diff{font-size:9px;color:var(--dimmer);letter-spacing:.06em;}
+  .scoreRow{display:flex;align-items:center;gap:13px;margin:11px 0 4px;}
+  .dial{position:relative;width:62px;height:62px;flex:0 0 62px;}
+  .dial svg{transform:rotate(-90deg);}
+  .dial b{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:17px;color:var(--white);font-weight:700;}
+  .dial b i{font-size:9px;color:var(--dimmer);font-style:normal;margin-left:1px;}
+  .verdict{font-size:11px;color:var(--grey);line-height:1.45;}
+  .verdict strong{color:var(--warn);}
+  .bar{height:5px;border-radius:3px;background:#16273f;overflow:hidden;margin-top:9px;}
+  .bar i{display:block;height:100%;width:33%;background:linear-gradient(90deg,var(--teal-dim),var(--teal));border-radius:3px;}
+  .barLabel{font-size:9px;color:var(--dimmer);margin-top:5px;letter-spacing:.04em;}
+
+  /* ---------- report ---------- */
+  .report{flex:1 1 330px;min-width:300px;max-width:400px;}
+  .rep-head{display:flex;align-items:center;gap:9px;margin-bottom:12px;}
+  .rep-head i{width:8px;height:8px;border-radius:50%;background:var(--teal);display:block;animation:blink 2s infinite;}
+  .rep-head h3{font-size:13px;color:var(--white);letter-spacing:-.01em;}
+  .rep-head span{font-size:10px;color:var(--dimmer);}
+
+  .block{background:var(--card,rgba(15,26,46,.6));border:1px solid var(--line);border-radius:11px;padding:12px 13px;margin-bottom:10px;}
+  .block h4{font-size:10px;letter-spacing:.11em;text-transform:uppercase;margin-bottom:8px;display:flex;align-items:center;gap:6px;}
+  .block h4.good{color:var(--good);} .block h4.bad{color:var(--bad);} .block h4.next{color:var(--teal);}
+  .block ul{list-style:none;}
+  .block li{font-size:11.5px;color:var(--grey);line-height:1.5;padding-left:13px;position:relative;margin-bottom:5px;}
+  .block li:last-child{margin-bottom:0;}
+  .block li:before{content:"–";position:absolute;left:0;color:var(--dimmer);}
+
+  .diagnosis{border-color:rgba(251,113,133,.4);background:rgba(251,113,133,.06);}
+  .flow{display:flex;flex-direction:column;gap:0;}
+  .row{display:flex;gap:9px;font-size:11.5px;line-height:1.45;padding:6px 0;}
+  .row .k{flex:0 0 52px;font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--dimmer);padding-top:2px;}
+  .row .v{color:var(--grey);}
+  .row .v.fix{color:var(--white);}
+  .row+.row{border-top:1px dashed rgba(251,113,133,.22);}
+
+  .chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:2px;}
+  .chip{font-size:10.5px;color:var(--teal);background:rgba(45,212,191,.1);border:1px solid rgba(45,212,191,.35);border-radius:999px;padding:5px 11px;cursor:pointer;transition:.15s;font-family:inherit;}
+  .chip:hover{background:rgba(45,212,191,.2);}
+  .foot{font-size:9.5px;color:var(--dimmer);margin-top:12px;line-height:1.5;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ============ PHONE ============ -->
+  <div class="phone">
+    <div class="screen">
+      <div class="notch"><span></span></div>
+
+      <div class="cam">
+        <svg viewBox="0 0 278 250" preserveAspectRatio="xMidYMid slice">
+          <!-- grip fingers (non-dominant hand) -->
+          <circle cx="96" cy="96" r="5" fill="none" stroke="#2dd4bf" stroke-width="1.4" opacity=".85"/>
+          <circle cx="96" cy="108" r="4" fill="none" stroke="#2dd4bf" stroke-width="1.2" opacity=".5"/>
+          <!-- throw hand -->
+          <circle cx="205" cy="150" r="6" fill="none" stroke="#2dd4bf" stroke-width="1.4" opacity=".85"/>
+          <circle cx="220" cy="146" r="4" fill="none" stroke="#2dd4bf" stroke-width="1.2" opacity=".5"/>
+          <!-- correct string plane -->
+          <line x1="96" y1="96" x2="205" y2="150" stroke="#2dd4bf" stroke-width="1.5" opacity=".75"/>
+          <!-- yoyo at rest position -->
+          <circle cx="150" cy="123" r="7" fill="rgba(45,212,191,.18)" stroke="#2dd4bf" stroke-width="1.4"/>
+          <!-- actual (missed) trajectory -->
+          <path d="M205 150 C 175 108, 148 84, 118 70" fill="none" stroke="#fb7185" stroke-width="1.6" stroke-dasharray="5,4"/>
+          <circle cx="118" cy="70" r="6" fill="rgba(251,113,133,.2)" stroke="#fb7185" stroke-width="1.5"/>
+          <text x="126" y="66" fill="#ffb3c0" font-size="8" font-family="ui-monospace,monospace">x OUTSIDE</text>
+          <!-- guide -->
+          <text x="104" y="90" fill="#5c7395" font-size="7.5" font-family="ui-monospace,monospace">finger</text>
+        </svg>
+        <div class="hud">
+          <span>1080p · 60fps</span>
+          <span class="rec"><i></i>TRACKING</span>
+        </div>
+        <div class="missTag">MISS → outside of string</div>
+        <div class="steps"><i class="ok"></i><i class="ok"></i><i class="bad"></i><i></i><i></i></div>
+      </div>
+
+      <div class="panel">
+        <div class="trickRow">
+          <h2>Trapeze</h2>
+          <span class="diff">1A · DIFFICULTY 2/9</span>
+        </div>
+
+        <div class="scoreRow">
+          <div class="dial">
+            <svg width="62" height="62">
+              <circle cx="31" cy="31" r="26" fill="none" stroke="#16273f" stroke-width="6"/>
+              <circle cx="31" cy="31" r="26" fill="none" stroke="#fbbf24" stroke-width="6"
+                      stroke-linecap="round" stroke-dasharray="163.4" stroke-dashoffset="98"/>
+            </svg>
+            <b>4<i>/10</i></b>
+          </div>
+          <div class="verdict">
+            <strong>Not landing yet.</strong> You hit the mount on 1 of your last 3 attempts.
+            Consistent outside-misses — this is a hand-position problem, not a technique problem.
+          </div>
+        </div>
+        <div class="bar"><i></i></div>
+        <div class="barLabel">ATTEMPT 3 / 3 · failed at step 3 of 5</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ REPORT ============ -->
+  <div class="report">
+    <div class="rep-head">
+      <i></i>
+      <h3>Coach report</h3>
+      <span>· grounded in 2 source tutorials</span>
+    </div>
+
+    <div class="block">
+      <h4 class="good">✓ What you did right</h4>
+      <ul>
+        <li>Breakaway was straight and stayed in plane — no tail, no tilt.</li>
+        <li>Non-dominant finger was set early and held still through the whole attempt.</li>
+      </ul>
+    </div>
+
+    <div class="block diagnosis">
+      <h4 class="bad">✗ What went wrong</h4>
+      <div class="flow">
+        <div class="row"><div class="k">Symptom</div><div class="v">Yoyo passed on the <b>outside</b> of the string and never landed.</div></div>
+        <div class="row"><div class="k">Cause</div><div class="v">Your yoyo hand was <b>too close to your body</b> at the moment of interception (measured 11 cm inside the target lane).</div></div>
+        <div class="row"><div class="k">Fix</div><div class="v fix">Move the yoyo hand further out, and aim for the extended part of the string right next to your finger — not the back.</div></div>
+      </div>
+    </div>
+
+    <div class="block">
+      <h4 class="next">▶ Next drill</h4>
+      <ul>
+        <li>10 breakaways, stopping with the string extended — no interception.</li>
+        <li>Then 10 trapezes aiming only at the string <i>next to the finger</i>.</li>
+      </ul>
+      <!-- must stay flush-left: no centering wrappers -->
+      <div class="chips">
+        <button class="chip" data-hermes-send="Show me all four trapeze failure modes from the knowledge base">All 4 failure modes</button>
+        <button class="chip" data-hermes-send="Replay my trapeze attempt step by step and tell me exactly which frame the hand position drifts">Step replay</button>
+        <button class="chip" data-hermes-send="I fixed the outside miss — what should I learn after Trapeze?">What's next after Trapeze?</button>
+      </div>
+    </div>
+
+    <p class="foot">
+      Prototype screen: static mock of the post-attempt coaching view, using the real Trapeze entry from
+      <code>data/knowledge_base/tricks.json</code>. Scores execution against the rubric — 4/10 is the honest score for
+      "occasionally lands, consistent bias", not a participation mark.
+    </p>
+  </div>
+
+</div>
+</body>
+</html>

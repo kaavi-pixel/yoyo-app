@@ -1,0 +1,370 @@
+{
+  "project": "yoyo-app",
+  "artifact": "trick-knowledge-base",
+  "version": "0.1.0",
+  "generated_from": "data/transcripts/*.txt (16 real tutorial transcripts, see data/transcripts/manifest.json)",
+  "purpose": "Ground truth for the coaching AI. Each trick carries (a) human teaching content mined from real tutorials and (b) coach_signals: the physically observable cues the vision layer must detect. coach_signals is the bridge between the transcript pipeline and the camera pipeline.",
+  "schema": {
+    "coach_signals": "Machine-checkable observations - what the CV layer looks for. Each has a 'signal' (what to measure) and a 'good' value.",
+    "failure_modes": "Diagnosis table: observable symptom -> root cause -> spoken fix. This is what powers 'what you did wrong'.",
+    "score_rubric": "Per-trick, non-sycophantic criteria for the /10. Scores execution, not effort."
+  },
+  "scale_note": "difficulty_1_9 matches the community-standard trick-ladder scale (1 = first sleeper, 9 = contest-level).",
+  "tricks": [
+    {
+      "trick": "Sleeper",
+      "aliases": ["The Sleeper", "Sleep"],
+      "style": "1A",
+      "level": "beginner",
+      "difficulty_1_9": 1,
+      "is_foundation": true,
+      "prerequisites": ["Basic throw (Gravity Pull)", "String wound over the top of the yoyo"],
+      "definition": "A front throw where the yoyo reaches the bottom of the string and keeps spinning there instead of returning to the hand. On an unresponsive yoyo this happens automatically; on a responsive yoyo it must be learned.",
+      "steps": [
+        { "n": 1, "do": "Make a muscle - hold the yoyo beside your ear, palm up, string wound OVER the top of the yoyo.", "cue": "Palm up, string over the top." },
+        { "n": 2, "do": "Extend your arm and let the yoyo roll off your fingers, down and out.", "cue": "Let it roll off, don't force it." },
+        { "n": 3, "do": "Follow your hand down with the yoyo, keeping your palm up, so no slack is created.", "cue": "Carry it down - hand travels with the yoyo." },
+        { "n": 4, "do": "When you want it back, flip your hand over and tug.", "cue": "Flip and tug as one motion." },
+        { "n": 5, "do": "Once the sleeper feels natural, add power: 45-degree stance, throw hand further back, pivot from the core (heel comes off the ground) and pinwheel the string over your fingers.", "cue": "Power comes from the core, not the arm." }
+      ],
+      "key_cues": [
+        "Keep your palm up and open for the whole throw.",
+        "Follow the yoyo down - the opposite of yanking it back.",
+        "Throw lightly first. Learn the feel before adding power.",
+        "String wound under the yoyo makes it spin the wrong way and roll off badly."
+      ],
+      "failure_modes": [
+        { "symptom": "Yoyo snaps back to hand immediately", "cause": "Slack created because the hand was pulled up / held still instead of following the yoyo down.", "fix": "Bounce your hand down WITH the yoyo as it falls, then tug." },
+        { "symptom": "Yoyo spins the wrong direction or rolls off the hand", "cause": "String wound under the yoyo rather than over the top.", "fix": "Rewind so the string comes over the top of the yoyo." },
+        { "symptom": "Sleeper returns fast and aggressively", "cause": "Throwing at full power before the sleeper is learned.", "fix": "Throw light until the yoyo reliably stays down, then power up in small steps." },
+        { "symptom": "Yoyo hits the floor", "cause": "Over-extending past comfortable reach / throwing past the belly-button level.", "fix": "Stop the throw around your starting level; don't reach past the belly button." },
+        { "symptom": "Shoulder/elbow pain", "cause": "Arm-only throw with no core pivot.", "fix": "Twist the core, pivot the back foot, let the heel come off the ground." }
+      ],
+      "coach_signals": [
+        { "signal": "Spin duration at bottom of string (sleeper time)", "good": ">= 10 s means mastered; < 2 s means the sleeper has not been achieved" },
+        { "signal": "Yoyo vertical position over time (stays at bottom vs. returns)", "good": "Sustained low position, no ascent" },
+        { "signal": "Yoyo rotation axis vs. string plane (correct spin direction)", "good": "Spin plane parallel to the string; a wrong-direction throw is visible as string twist/tangle" },
+        { "signal": "Hand vertical travel in the first ~300 ms after release", "good": "Hand descends with the yoyo (palm-up follow-through)" }
+      ],
+      "score_rubric": {
+        "10": "Consistent 15s+ sleepers, straight throw, no wobble, reliable catch",
+        "7-9": "Reliable sleeper over 10 s, slight wobble or minor tilt, returns cleanly",
+        "4-6": "Sleeps but briefly or inconsistently; sometimes returns early",
+        "1-3": "Yoyo will not stay down, or returns immediately",
+        "0": "Throw does not happen / yoyo not rolling off the hand"
+      },
+      "source_videos": [
+        { "channel": "AT YoYo Superstar", "video_id": "Iui_Tutm0sU", "title": "Basics of Yoyo Series: How to Throw a Sleeper" },
+        { "channel": "YoTricks", "video_id": "IFkgxEtSjxQ", "title": "How To Properly Throw A Yoyo (Sleeper Tutorial)" },
+        { "channel": "Mr Model / Muzzle Top Yoyos", "video_id": "QqbkoqTA8y4", "title": "Getting Power in Your Sleeper" }
+      ]
+    },
+    {
+      "trick": "Bind",
+      "aliases": ["Front Bind", "Side Bind", "Binding"],
+      "style": "1A",
+      "level": "beginner",
+      "difficulty_1_9": 2,
+      "is_foundation": true,
+      "prerequisites": ["Unresponsive yoyo", "A spinning throw (sleeper)"],
+      "definition": "The move that returns an unresponsive yoyo to your hand. Because the yoyo will not come back on a tug, you feed string into the gap so it winds up around the bearing.",
+      "steps": [
+        { "n": 1, "do": "Throw a good sleeper with the yoyo spinning.", "cue": "Need real spin to bind." },
+        { "n": 2, "do": "Place the string over the FRONT of the yoyo and fold it over the gap.", "cue": "Front, not back, for a front bind." },
+        { "n": 3, "do": "Pinch the end of the string and hold it very lightly - as if you are about to drop it.", "cue": "Loose grip; you are not holding it closed." },
+        { "n": 4, "do": "Pull your throw hand up and your opposite hand down so the string gathers around the bearing.", "cue": "Up with throw hand, down with the other." },
+        { "n": 5, "do": "As the yoyo starts winding it will rip out of your fingers - catch it with your opposite hand.", "cue": "Don't let go until you feel it snag." },
+        { "n": 6, "do": "Side bind: same motion but the string goes over the BACK of the yoyo and your hands are crossed.", "cue": "Opposite side of the yoyo for a side throw." }
+      ],
+      "key_cues": [
+        "String must go over the front of the yoyo for a front bind - behind it and nothing happens.",
+        "Hold the string loosely; a tight pinch stops the wind-up.",
+        "Do not release until you feel/hear the yoyo catch.",
+        "Tilt is controllable: move your throw hand in the opposite direction of the tilt."
+      ],
+      "failure_modes": [
+        { "symptom": "Nothing happens, yoyo keeps spinning", "cause": "String placed behind the yoyo, or the yoyo was placed on the string and simply dropped without wrapping.", "fix": "Take the string over the FRONT and wrap it under/around the bearing." },
+        { "symptom": "Yoyo flies off or rebounds dangerously", "cause": "Released the pinch before the string caught.", "fix": "Hold until you feel the snag, then release." },
+        { "symptom": "Yoyo binds but comes back crooked / tilts", "cause": "Yoyo tilted when it entered the string.", "fix": "Steer the tilt with the throw hand - move it opposite to the lean." },
+        { "symptom": "Bind is weak, yoyo walks up partway", "cause": "Not enough string gathered on the bearing (grabbed too high/low on the string).", "fix": "Grab about two-thirds of the way down, the 'happy medium' between half and two-thirds." }
+      ],
+      "coach_signals": [
+        { "signal": "Yoyo returns to hand within N seconds of the bind attempt (binary success)", "good": "Yoyo ascends and is caught" },
+        { "signal": "String path over the front vs. the back of the yoyo at bind entry", "good": "Front of the yoyo for a front bind" },
+        { "signal": "Yoyo spin-up (rotation rate rising) vs. free spin (constant)", "good": "Rotation rate rises as string gathers" },
+        { "signal": "Yoyo tilt angle at entry", "good": "Near-vertical, minimal lean" }
+      ],
+      "score_rubric": {
+        "10": "Binds instantly and cleanly every time, both front and side, yoyo lands in hand",
+        "7-9": "Reliable front bind; side bind occasionally needs a second attempt",
+        "4-6": "Binds sometimes; often needs multiple attempts or comes back weakly",
+        "1-3": "Yoyo rarely returns; usually drops the string or releases early",
+        "0": "No bind achieved"
+      },
+      "source_videos": [
+        { "channel": "YoTricks", "video_id": "lAtGnUtv6Ps", "title": "How to bind a yoyo (return an unresponsive yoyo to your hand)" },
+        { "channel": "YoTricks", "video_id": "CGPvbP8foTg", "title": "How To Bind YoYo Tutorial" },
+        { "channel": "YoTricks", "video_id": "JztYpzsSgvA", "title": "How to Bind an Unresponsive Yoyo - Easy Beginner Tutorial" }
+      ]
+    },
+    {
+      "trick": "Trapeze",
+      "aliases": ["Man on the Flying Trapeze", "The Trapeze"],
+      "style": "1A",
+      "level": "beginner",
+      "difficulty_1_9": 2,
+      "is_foundation": true,
+      "prerequisites": ["Breakaway (sideways throw)"],
+      "definition": "After a breakaway, intercept the swinging yoyo with your non-dominant index finger so the yoyo lands on the string - the fundamental 1A mount that nearly every string trick builds from.",
+      "steps": [
+        { "n": 1, "do": "Throw a breakaway (sideways throw).", "cue": "Sideways, string over the front." },
+        { "n": 2, "do": "Extend your non-dominant index finger and hold it still in front of you.", "cue": "Set it and don't move it." },
+        { "n": 3, "do": "Let the swinging yoyo intercept the string over that finger - it lands on its own as it comes around.", "cue": "Move your yoyo hand toward the yoyo to slow it, then away to accelerate it over the finger." },
+        { "n": 4, "do": "Push your non-dominant hand into the string as the yoyo swings around.", "cue": "Push into it - don't hold still." },
+        { "n": 5, "do": "Dismount by flicking off where you came from (pinch, flick off the back, let it hang), then tug up or bind.", "cue": "Pinch, around, out." }
+      ],
+      "key_cues": [
+        "Land the yoyo CLOSE to your finger - a short string segment is far easier to hit.",
+        "Aim for the FRONT of the string, never the back.",
+        "Keep both hands aligned - the single biggest cause of misses.",
+        "Push the non-dominant hand into the string as the yoyo arrives."
+      ],
+      "failure_modes": [
+        { "symptom": "Yoyo misses on the OUTSIDE of the string", "cause": "Yoyo hand is too close to your body.", "fix": "Move the yoyo hand further away from you." },
+        { "symptom": "Yoyo misses on the INSIDE of the string", "cause": "Yoyo hand is too far away from your body.", "fix": "Bring the yoyo hand closer to you." },
+        { "symptom": "Misses every so often with no clear pattern", "cause": "Aiming for the back of the string instead of the front.", "fix": "Aim for the front, extended part of the string, close to the finger." },
+        { "symptom": "Trapeze lands but slides off", "cause": "Non-dominant hand held still; no push into the string.", "fix": "Push the non-dominant hand into the string to keep tension." }
+      ],
+      "coach_signals": [
+        { "signal": "Did the yoyo cross to the far side of the string (land) or not", "good": "Yoyo lands on the string and rests between the finger and the yoyo hand" },
+        { "signal": "Which side of the string the yoyo passed on a miss (outside vs. inside)", "good": "N/A (used to diagnose: outside => yoyo hand too close; inside => too far)" },
+        { "signal": "Horizontal distance between the two hands at the moment of interception", "good": "Hands aligned, roughly shoulder width, string taut" },
+        { "signal": "Contact point along the string (distance from the non-dominant finger)", "good": "Close to the finger, not near the back/far end" }
+      ],
+      "score_rubric": {
+        "10": "Lands every time, string taut and centred, clean dismount either way",
+        "7-9": "Lands most attempts, occasional misalignment",
+        "4-6": "Lands sometimes; misses are random without a clear cause",
+        "1-3": "Rarely lands; consistent bias to one side",
+        "0": "No breakaway / no interception attempted"
+      },
+      "source_videos": [
+        { "channel": "The Yoyo Bro", "video_id": "t1hFlEezZpg", "title": "How to do the Trapeze - Beginner Yoyo Tutorial" },
+        { "channel": "YoTricks", "video_id": "RM_y--nqvvs", "title": "Man on the Flying Trapeze - Foundational Trick" }
+      ]
+    },
+    {
+      "trick": "Double Trapeze",
+      "aliases": ["Double Trapease", "Triple Trapeze"],
+      "style": "1A",
+      "level": "beginner",
+      "difficulty_1_9": 2.5,
+      "prerequisites": ["Trapeze"],
+      "definition": "A Trapeze variation where the yoyo is flipped over the finger one more time, adding a second string wrap. Extends naturally to triple and quadruple trapezes.",
+      "steps": [
+        { "n": 1, "do": "Land a Trapeze.", "cue": "Get the first mount solid first." },
+        { "n": 2, "do": "Flip the yoyo over the finger one more time for your double.", "cue": "Same motion as the first, one more pass." },
+        { "n": 3, "do": "Keep going for a triple or quadruple if you want, then bring it back to your hand.", "cue": "Each extra flip adds a wrap." }
+      ],
+      "key_cues": ["Each flip is one extra wrap of string around the non-dominant finger.", "Keep the string taut between flips."],
+      "failure_modes": [
+        { "symptom": "Extra flip lands untidily / string tangles", "cause": "Lost string tension between flips.", "fix": "Keep tension through the flip; pause if needed." },
+        { "symptom": "Yoyo loses spin during the extra flips", "cause": "Too much friction from wraps / slow spin.", "fix": "Throw a stronger sleeper first." }
+      ],
+      "coach_signals": [
+        { "signal": "Number of string wraps around the non-dominant finger", "good": "2 for a double, 3 for a triple" },
+        { "signal": "Yoyo spin rate across the sequence", "good": "Maintains spin through the extra flips" }
+      ],
+      "score_rubric": {
+        "10": "Clean doubles into triples, no tangles, plenty of spin left",
+        "7-9": "Solid doubles consistently",
+        "4-6": "Double lands sometimes",
+        "1-3": "Cannot land the second flip",
+        "0": "No trapeze to build from"
+      },
+      "source_videos": [
+        { "channel": "YoTricks", "video_id": "2_rDcRo4xgg", "title": "Learn how to do the Double Trapeze yoyo trick" }
+      ]
+    },
+    {
+      "trick": "Brain Scrambler",
+      "aliases": ["Brain Twister", "Trapeze Mount Flip"],
+      "style": "1A",
+      "level": "beginner",
+      "difficulty_1_9": 3,
+      "prerequisites": ["Front mount (or the easier string-lift entry)", "Good throw"],
+      "definition": "The first trick to learn from a front mount. The yoyo hops repeatedly over your non-dominant finger while the string wraps - looks flashy, mechanically simple.",
+      "steps": [
+        { "n": 1, "do": "Set your opposite (non-dominant) hand pointing off to the side in front of you and leave it still.", "cue": "Point it out and freeze it." },
+        { "n": 2, "do": "Throw and swing the yoyo forward. On the way back it hits that first finger. Pull up with your yoyo hand so it wraps and lands on the string - this is the front mount.", "cue": "Pull straight up - an angled pull will miss." },
+        { "n": 3, "do": "Bring your hands together and place the yoyo-hand finger just below the first finger of the opposite hand.", "cue": "Yoyo finger sits just under the opposite first finger." },
+        { "n": 4, "do": "Use that finger to start the motion - swing the yoyo forward first to give it momentum, then do flips. One flip completes the trick; add as many as you like.", "cue": "One flip is enough." },
+        { "n": 5, "do": "Dismount: swing the yoyo forward again but pull your opposite finger down so the yoyo swings out in front of you.", "cue": "Swing forward, pull the opposite finger down." }
+      ],
+      "key_cues": [
+        "The easy entry: lift the string with your opposite hand and set the yoyo on it - no front mount needed to start learning.",
+        "Keep the opposite hand still; if it moves, the trick gets harder.",
+        "Pull straight up to land the mount - left/right misses are the yoyo hand's fault.",
+        "Some string wrapping around your finger during flips is normal."
+      ],
+      "failure_modes": [
+        { "symptom": "Yoyo misses the mount off to the left or right", "cause": "Pulled up at an angle, or the opposite hand moved.", "fix": "Pull straight up; keep the opposite hand still and compensate with the yoyo hand." },
+        { "symptom": "Yoyo will not hop over the finger", "cause": "No forward momentum before the first push.", "fix": "Swing the yoyo forward first, then push with the finger." },
+        { "symptom": "Yoyo swings out early / trick collapses", "cause": "Losing the mount between flips.", "fix": "Keep the string taut and the yoyo finger just below the opposite first finger." }
+      ],
+      "coach_signals": [
+        { "signal": "Front mount acquired (yoyo resting on the string between the fingers)", "good": "Yoyo on string, mount holds for > 0.5 s" },
+        { "signal": "Flip events - count of yoyo hops over the non-dominant finger", "good": ">= 1 flip; more for show" },
+        { "signal": "String wrap accumulation on the yoyo-hand finger", "good": "Increases gradually, no sudden tangle" },
+        { "signal": "Opposite-hand stillness during the mount", "good": "Near-zero lateral movement" }
+      ],
+      "score_rubric": {
+        "10": "Mounts cleanly, multiple flips with rhythm, tidy exit, spin retained",
+        "7-9": "Clean single flip, reliable mount",
+        "4-6": "Mounts but flips are inconsistent",
+        "1-3": "Mount rarely lands",
+        "0": "No front mount / no throw"
+      },
+      "source_videos": [
+        { "channel": "YoTricks", "video_id": "q61hZvjt-3I", "title": "The Brain-Scrambler Yoyo Trick (AKA Brain-Twister)" },
+        { "channel": "Dylan Kowalski", "video_id": "dCeECT8Bn04", "title": "Brain Twister or Brain Scrambler Yoyo Trick Tutorial" }
+      ]
+    },
+    {
+      "trick": "Barrel Rolls",
+      "aliases": ["Barrel Roll"],
+      "style": "1A",
+      "level": "beginner",
+      "difficulty_1_9": 3.5,
+      "prerequisites": ["Brain Scrambler / front mount"],
+      "definition": "Built directly on the Brain Scrambler mount. Instead of a simple flip, the yoyo hops over alternating fingers - right, left, right, left - producing a rolling barrel effect.",
+      "steps": [
+        { "n": 1, "do": "Start the same as the Brain Scrambler and get into that mount.", "cue": "Same mount as Brain Twister." },
+        { "n": 2, "do": "Curl your throw hand and place your throw-hand index finger in between the strings.", "cue": "Index finger goes between the strings." },
+        { "n": 3, "do": "Push forward with the throw-hand index finger, going underneath the yoyo with a slight swing - the yoyo hops onto the string.", "cue": "Under the yoyo with a slight swing." },
+        { "n": 4, "do": "Move your non-throw hand forward, under and all the way around the yoyo while your throw hand stays in place. That is one barrel roll.", "cue": "Throw hand stays put; the other hand travels around." },
+        { "n": 5, "do": "Repeat - hop over the right finger, then the left finger, right, left, as many times as you like.", "cue": "Right, left, right, left." },
+        { "n": 6, "do": "Unfold the string, do a front-style bind and bring it back to your hand.", "cue": "Unmount properly - don't just let the string go." }
+      ],
+      "key_cues": [
+        "Make each barrel roll TWO motions, not one rushed blur.",
+        "The hand in front goes UNDER the yoyo.",
+        "Unmount and bind properly instead of dropping all the string.",
+        "Only two easy moves make up the whole trick."
+      ],
+      "failure_modes": [
+        { "symptom": "Yoyo drops instead of hopping", "cause": "Push was flat rather than under the yoyo, or no swing.", "fix": "Push forward-under with a slight swing." },
+        { "symptom": "Trick stalls after one roll", "cause": "Throw hand drifted out of position.", "fix": "Keep the throw hand fixed where it is." },
+        { "symptom": "Messy finish, yoyo drops on the return", "cause": "Dropped all the string before returning instead of unmounting.", "fix": "Unmount deliberately then do a front-style bind." }
+      ],
+      "coach_signals": [
+        { "signal": "Count of yoyo hop-over events and their alternation (right/left)", "good": "Alternating, repeated at a steady rate" },
+        { "signal": "Throw-hand position stability during the sequence", "good": "Low movement; the non-throw hand does the travelling" },
+        { "signal": "Sequence length before a drop", "good": "Increasing over sessions (progress metric)" }
+      ],
+      "score_rubric": {
+        "10": "Flawless alternating rolls, spin held for many cycles, clean bind finish",
+        "7-9": "Smooth repeated rolls, occasional stutter",
+        "4-6": "One or two rolls then a drop",
+        "1-3": "Yoyo will not hop reliably",
+        "0": "Mount never established"
+      },
+      "source_videos": [
+        { "channel": "YoTricks", "video_id": "hCIih0BVR8w", "title": "How to do BARREL ROLLS - yoyo trick lvl 28" },
+        { "channel": "Howcast / Expert Village", "video_id": "8KNtwiJ08ik", "title": "How to Do the Barrel Rolls | Yo-Yo Tricks" }
+      ]
+    },
+    {
+      "trick": "Horizontal Trapeze & Bind",
+      "aliases": ["Horizontal foundations", "Horizontal tricks"],
+      "style": "1A",
+      "level": "intermediate",
+      "difficulty_1_9": 6,
+      "prerequisites": ["Consistent Trapeze", "Bind", "Basic string control (pinwheel/lasso/UFO helps)"],
+      "definition": "Trapeze and bind performed with the yoyo spinning in a horizontal plane instead of vertical - a core modern 1A technique and a prerequisite for a whole family of advanced tricks.",
+      "steps": [
+        { "n": 1, "do": "Learn to throw diagonally first. Aim more diagonally upward than feels natural; straight-to-horizontal is very hard.", "cue": "Diagonal first, horizontal later." },
+        { "n": 2, "do": "Practise a pinwheel with the string kept between your thumb and index finger to build horizontal control.", "cue": "Keep the string in the pinch; try to hold the pinwheel." },
+        { "n": 3, "do": "Try a Trapeze in the horizontal state - often easier coming out of one pinwheel.", "cue": "Pinwheel once, then trapeze." },
+        { "n": 4, "do": "Add a somersault, keeping the yoyo rotating with the momentum you already have.", "cue": "Use existing momentum; catching is optional at this stage." },
+        { "n": 5, "do": "Bind: after the trapeze, do a reverse trapeze with your middle finger, then bind. A reverse somersault builds momentum and helps.", "cue": "Reverse trapeze with the middle finger, then bind." },
+        { "n": 6, "do": "If binding is hard, use a jail to take the yoyo from horizontal back to vertical before binding.", "cue": "Jail to escape the horizontal plane." }
+      ],
+      "key_cues": [
+        "Use a shorter string - a long string is much harder to control horizontally.",
+        "A less responsive yoyo is better while learning horizontal; a wide-radius, low-edge yoyo helps angle control.",
+        "Start diagonal every time and tighten the angle as you improve.",
+        "Aim higher than you think you need to when going for horizontal."
+      ],
+      "failure_modes": [
+        { "symptom": "Cannot achieve horizontal at all, yoyo tilts vertical", "cause": "Thrown too flat/low; insufficient diagonal-upward angle.", "fix": "Throw noticeably more diagonally upward; work the angle down in stages." },
+        { "symptom": "Yoyo drifts and will not hold the horizontal plane", "cause": "String too long / wrong yoyo for the technique / no pinch control.", "fix": "Shorten the string, use a wide-radius low-edge yoyo, drill the pinwheel." },
+        { "symptom": "Trapeze in horizontal lands but bind fails", "cause": "Bind entered from the wrong side for a horizontal spin.", "fix": "Reverse trapeze with the middle finger, then bind; add a reverse somersault for momentum." },
+        { "symptom": "Everything feels out of control", "cause": "Jumping to horizontal before the diagonal is stable.", "fix": "Step back to diagonal throws until they are consistent." }
+      ],
+      "coach_signals": [
+        { "signal": "Yoyo spin plane angle relative to the ground (horizontal vs. vertical)", "good": "Within ~15 degrees of horizontal by the end; diagonal is acceptable early" },
+        { "signal": "Yoyo height consistency during the pinwheel", "good": "Stable height, minimal drift" },
+        { "signal": "String length relative to the player", "good": "Shorter than a standard vertical setup" },
+        { "signal": "Bind entry side vs. spin direction", "good": "Correct side for the current spin direction" }
+      ],
+      "score_rubric": {
+        "10": "Stable horizontal plane, clean horizontal trapeze and bind, ready for horizontal combos",
+        "7-9": "Holds horizontal most attempts, trapeze reliable, bind occasionally messy",
+        "4-6": "Achieves diagonal reliably, horizontal only sometimes",
+        "1-3": "Yoyo always returns to vertical",
+        "0": "Cannot throw diagonally"
+      },
+      "source_videos": [
+        { "channel": "YoYo Store REWIND", "video_id": "G3dv_MI6TfM", "title": "How to do Horizontal Yo-Yo Tricks [Like a Pro]" }
+      ]
+    },
+    {
+      "trick": "Chopsticks Madness",
+      "aliases": ["Chopstick Madness"],
+      "style": "1A",
+      "level": "intermediate",
+      "difficulty_1_9": 6.5,
+      "prerequisites": ["Chopsticks", "Undermount", "Trapeze", "Reliable bind"],
+      "definition": "An intermediate repeater combo that chains a chopstick undersmount, a rotation element, a trapeze-brother mount and a repeating cycle - designed to be looped as many times as the spin allows.",
+      "steps": [
+        { "n": 1, "do": "Throw a breakaway and intercept the string with your middle finger (index also works, but middle is recommended).", "cue": "Intercept with the middle finger." },
+        { "n": 2, "do": "Enter a chopstick with your thumb - the chopstick undersmount.", "cue": "Thumb makes the chopstick." },
+        { "n": 3, "do": "With your throw-hand index finger, undercut the leftmost string, entering that mount, and let the yoyo pass between your middle finger and thumb.", "cue": "Under the leftmost string; yoyo between middle finger and thumb." },
+        { "n": 4, "do": "Rotate and intercept the string, doing a full rotation using your throw-hand index finger as the pivot.", "cue": "Throw-hand index is the pivot." },
+        { "n": 5, "do": "Undercut with your non-throw end, then double on the two strings (rotate one, rotate two) into a trapeze with your whole hand inserted into the loop.", "cue": "Two rotations into the trapeze." },
+        { "n": 6, "do": "Chopstick with your thumb into that string again and push the yoyo down a little to create a deep chopstick.", "cue": "Deep chopstick - go down a bit." },
+        { "n": 7, "do": "Swing and intercept the leftmost string with your throw-hand index, undercutting the yoyo.", "cue": "Note: this is bind configuration - the yoyo may snag, so be careful." },
+        { "n": 8, "do": "Extract the yoyo from the chopstick from the top (between thumb and index), rotate it clockwise around your throw-hand index, curl that index to hook the string, and let the yoyo fall back into the chopstick - this is the repeater.", "cue": "This part is the repeater: loop it as many times as you like." },
+        { "n": 9, "do": "Bind: rotate the yoyo clockwise, intercept the string, release the non-throw hand, intercept the whole mount, release the throw hand, let the yoyo pass to the other side, then intercept the top string to bind.", "cue": "Broader mount, then intercept the top string to bind." }
+      ],
+      "key_cues": [
+        "The repeater section can be repeated indefinitely - it is a stamina/spin-length trick.",
+        "Step 7 sits in bind configuration - expect the yoyo to snag there.",
+        "Keeping the strings untwisted through the rotations is most of the difficulty."
+      ],
+      "failure_modes": [
+        { "symptom": "Strings tangle during the rotation element", "cause": "Rotation direction inconsistent / string not kept taut.", "fix": "Do the full rotation with the throw-hand index as a fixed pivot; keep tension." },
+        { "symptom": "Yoyo snags or binds early mid-trick", "cause": "That mount is a bind configuration.", "fix": "Expect it; keep the yoyo spinning fast and move through it quickly." },
+        { "symptom": "Repeater falls apart after one cycle", "cause": "Lost the deep chopstick on extraction.", "fix": "Push down into a deep chopstick before swinging; extract from the top between thumb and index." },
+        { "symptom": "Runs out of spin", "cause": "Base spin too weak for the number of cycles.", "fix": "Stronger sleeper; fewer cycles until stamina improves." }
+      ],
+      "coach_signals": [
+        { "signal": "Chopstick mount detection (string pinched between thumb and finger)", "good": "Mount holds" },
+        { "signal": "Repeater cycle count before a drop", "good": "Increasing over sessions" },
+        { "signal": "Yoyo spin rate decay across cycles", "good": "Slow decay; enough spin to complete the planned cycles" },
+        { "signal": "Twist/untwist state of the strings through the rotation element", "good": "Strings return untwisted" }
+      ],
+      "score_rubric": {
+        "10": "Multiple clean repeater cycles, no tangles, controlled bind",
+        "7-9": "One to three clean cycles, occasional tangle",
+        "4-6": "Reaches the repeater but cannot loop it",
+        "1-3": "Chopstick mount established but the rotation element fails",
+        "0": "Prerequisite mounts not available"
+      },
+      "source_videos": [
+        { "channel": "Diego B. Yoyo Things", "video_id": "8viwFp2dd4E", "title": "CHOPSTICKS MADNESS - Yoyo Trick Tutorial (intermediate)" }
+      ]
+    }
+  ]
+}

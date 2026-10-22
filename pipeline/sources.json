@@ -1,0 +1,35 @@
+{
+  "project": "yoyo-app",
+  "description": "Curated tutorial source registry. Each entry is a real YouTube tutorial for a named trick, used to build the grounded trick knowledge base. Quality-filtered by hand: prefers channels with clear step-by-step verbal instruction over pure visual demos, because the pipeline mines the TRANSCRIPT, not the video.",
+  "selection_criteria": [
+    "Channel/creator is an established yoyo tutorial source (YoTricks, YoYoExpert, AT YoYo Superstar, The Yoyo Bro, Dylan Kowalski, etc.)",
+    "Transcript is available (auto-captions count) - the pipeline is transcript-driven",
+    "Video walks through the trick verbally (mount names, hand positions, tips, common mistakes)",
+    "Deprioritised: pure slow-mo demos / music-only edits with no narration"
+  ],
+  "styles": {
+    "1A": "Single-handed string tricks (the dominant modern style)",
+    "2A": "Two-handed looping",
+    "3A": "Two-handed string tricks",
+    "4A": "Offstring (yoyo detached from string)",
+    "5A": "Counterweight / freehand"
+  },
+  "sources": [
+    { "trick": "Sleeper", "level": "beginner", "style": "1A", "video_id": "Iui_Tutm0sU", "channel": "AT YoYo Superstar", "title": "Basics of Yoyo Series: How to Throw a Sleeper! Tutorial and Tips" },
+    { "trick": "Sleeper", "level": "beginner", "style": "1A", "video_id": "IFkgxEtSjxQ", "channel": "YoTricks", "title": "How To Properly Throw A Yoyo (Sleeper Tutorial)" },
+    { "trick": "Sleeper", "level": "intermediate", "style": "1A", "video_id": "QqbkoqTA8y4", "channel": "Mr Model / Muzzle Top Yoyos", "title": "Getting Power in Your Sleeper: how to throw a yoyo front style" },
+    { "trick": "Bind", "level": "beginner", "style": "1A", "video_id": "lAtGnUtv6Ps", "channel": "YoTricks", "title": "How to bind a yoyo (return an unresponsive yoyo to your hand)" },
+    { "trick": "Bind", "level": "beginner", "style": "1A", "video_id": "CGPvbP8foTg", "channel": "YoTricks", "title": "How To Bind YoYo Tutorial" },
+    { "trick": "Bind", "level": "beginner", "style": "1A", "video_id": "JztYpzsSgvA", "channel": "YoTricks", "title": "How to Bind an Unresponsive Yoyo - Easy Beginner Tutorial" },
+    { "trick": "Trapeze", "level": "beginner", "style": "1A", "video_id": "t1hFlEezZpg", "channel": "The Yoyo Bro", "title": "How to do the Trapeze - (Beginner Yoyo Tutorial)" },
+    { "trick": "Trapeze", "level": "beginner", "style": "1A", "video_id": "RM_y--nqvvs", "channel": "YoTricks", "title": "Man on the Flying Trapeze - Foundational Trick" },
+    { "trick": "Double Trapeze", "level": "beginner", "style": "1A", "video_id": "2_rDcRo4xgg", "channel": "YoTricks", "title": "Learn how to do the Double Trapeze yoyo trick" },
+    { "trick": "Brain Scrambler (Brain Twister)", "level": "beginner", "style": "1A", "video_id": "q61hZvjt-3I", "channel": "YoTricks", "title": "The Brain-Scrambler Yoyo Trick (AKA Brain-Twister)" },
+    { "trick": "Brain Scrambler (Brain Twister)", "level": "beginner", "style": "1A", "video_id": "dCeECT8Bn04", "channel": "Dylan Kowalski", "title": "Brain Twister or Brain Scrambler Yoyo Trick Tutorial" },
+    { "trick": "Barrel Rolls", "level": "beginner", "style": "1A", "video_id": "hCIih0BVR8w", "channel": "YoTricks", "title": "How to do BARREL ROLLS - yoyo trick lvl 28" },
+    { "trick": "Barrel Rolls", "level": "beginner", "style": "1A", "video_id": "8KNtwiJ08ik", "channel": "Howcast / Expert Village", "title": "How to Do the Barrel Rolls | Yo-Yo Tricks" },
+    { "trick": "Chopsticks Madness", "level": "intermediate", "style": "1A", "video_id": "8viwFp2dd4E", "channel": "Diego B. Yoyo Things", "title": "CHOPSTICKS MADNESS - Yoyo Trick Tutorial *intermediate*" },
+    { "trick": "Horizontal Tricks (foundations)", "level": "intermediate", "style": "1A", "video_id": "G3dv_MI6TfM", "channel": "YoYo Store REWIND", "title": "How to do Horizontal Yo-Yo Tricks [Like a Pro] - Trapeze / Pinwheel / Bind" },
+    { "trick": "Complete Beginner Course", "level": "beginner", "style": "1A", "video_id": "oidBhASs8xE", "channel": "YoTricks", "title": "How to Yoyo: Complete Beginner Course" }
+  ]
+}

@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+
+# Local scratch
+*.log
+.cache/
+
+# Never commit credentials or downloaded media.
+# The content pipeline stores transcripts and the derived knowledge base on
+# purpose - both are small, text-only, and traceable to named sources.
+# Video and audio files are never part of this project.
+*.mp4
+*.mov
+*.mkv
+*.wav
+*.mp3
+.env
+.env.*
